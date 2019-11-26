@@ -1,0 +1,34 @@
+{
+  "name": "DVJ",
+  "version": "1.0.0",
+  "description": "Experiments with react-konva",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturJS/DVJ.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturJS/DVJ/issues"
+  },
+  "homepage": "https://github.com/ArturJS/DVJ#readme",
+  "devDependencies": {
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.23.7",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "konva": "^4.0.18",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-konva": "^16.10.1-0"
+  }
+}
