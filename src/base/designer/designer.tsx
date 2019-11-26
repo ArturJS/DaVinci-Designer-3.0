@@ -16,15 +16,7 @@ export const Designer = () => {
             width={stageSize.width}
             height={stageSize.height}>
             <Layer>
-                <Rect
-                    x={20}
-                    y={20}
-                    width={50}
-                    height={50}
-                    fill={'#2e0fd0'}
-                    shadowBlur={5}
-                    draggable
-                />
+                <Rect />
             </Layer>
         </Stage>
     );
