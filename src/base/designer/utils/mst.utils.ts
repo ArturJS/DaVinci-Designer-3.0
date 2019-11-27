@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-const MSTContext = createContext(null);
+const MSTContext = createContext({});
 
 export const MSTProvider = MSTContext.Provider;
 

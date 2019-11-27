@@ -2,35 +2,22 @@
   "name": "DVJ",
   "version": "1.0.0",
   "description": "Experiments with react-konva",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel ./index.html",
-    "build": "parcel build ./index.html",
-    "lint": "eslint -c .eslintrc.js 'src/**/*.{ts,tsx}'"
+  "keywords": [],
+  "homepage": "https://github.com/ArturJS/DVJ#readme",
+  "bugs": {
+    "url": "https://github.com/ArturJS/DVJ/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArturJS/DVJ.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArturJS/DVJ/issues"
-  },
-  "homepage": "https://github.com/ArturJS/DVJ#readme",
-  "devDependencies": {
-    "@types/react": "^16.9.12",
-    "@types/react-dom": "^16.9.4",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^1.19.1",
-    "sass": "^1.23.7",
-    "typescript": "^3.7.2"
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --mode production",
+    "dev": "webpack-dev-server --hot --mode development",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "konva": "^4.0.18",
@@ -40,5 +27,29 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-konva": "^16.10.1-0"
+  },
+  "devDependencies": {
+    "@hot-loader/react-dom": "^16.11.0+4.12.16",
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-template": "^6.2.0",
+    "node-sass": "^4.13.0",
+    "prettier": "^1.19.1",
+    "react-hot-loader": "^4.12.18",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
