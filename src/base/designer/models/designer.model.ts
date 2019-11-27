@@ -1,4 +1,4 @@
-import { types as t } from 'mobx-state-tree';
+import { types as t, Instance } from 'mobx-state-tree';
 import { RectModel } from './rect.model';
 
 export const DesignerModel = t
@@ -6,7 +6,7 @@ export const DesignerModel = t
         designObjects: t.array(RectModel)
     })
     .actions(self => ({
-        addObject(designObject) {
+        addObject(designObject: Instance<typeof RectModel>) {
             self.designObjects.push(designObject);
         }
     }));

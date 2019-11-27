@@ -10,7 +10,7 @@ export const RectModel = t
         fill: t.string
     })
     .actions(self => ({
-        setCoords({ x, y }) {
+        setCoords({ x, y }: { x: number; y: number }) {
             self.x = x;
             self.y = y;
         }

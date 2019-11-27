@@ -12,13 +12,24 @@ const stageSize = {
     height: screen.height / 2
 };
 
+const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    const colors = ['#'];
+
+    for (let i = 0; i < 6; i++) {
+        colors.push(letters[Math.floor(Math.random() * 16)]);
+    }
+
+    return colors.join('');
+};
+
 const rectObject = RectModel.create({
     id: 1,
     width: 50,
     height: 50,
     x: 20,
     y: 20,
-    fill: '#ff0fd0'
+    fill: getRandomColor()
 });
 
 const designerObject = DesignerModel.create({
