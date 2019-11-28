@@ -16,8 +16,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -p --mode production",
+    "build:validate": "webpack -p --mode development --noEmit",
     "dev": "webpack-dev-server --hot --mode development",
-    "lint": "eslint -c .eslintrc.js 'src/**/*.{ts,tsx}'"
+    "lint": "eslint -c .eslintrc.js 'src/**/*.{ts,tsx}'",
+    "precommit": "npm run build:validate && lint-staged"
   },
   "dependencies": {
     "konva": "^4.0.18",
@@ -36,20 +38,31 @@
     "@typescript-eslint/parser": "^2.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^3.2.0",
+    "disable-output-webpack-plugin": "^1.0.1",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
     "react-hot-loader": "^4.12.18",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "tsc": "^1.20150623.0",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
