@@ -33,6 +33,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            title: 'DVD-3.0',
             template: require('html-webpack-template'),
             inject: false,
             appMountId: 'app'
