@@ -44,18 +44,20 @@ export const Designer = () => {
     return (
         <>
             <DebugInfo />
-            <Stage
-                className="base-stage"
-                width={stageSize.width}
-                height={stageSize.height}>
-                <MSTProvider value={designerObject}>
-                    <Layer>
-                        {designerObject.designObjects.map(({ id }) => (
-                            <Rect id={id} key={id} />
-                        ))}
-                    </Layer>
-                </MSTProvider>
-            </Stage>
+            <MSTProvider value={designerObject}>
+                <Stage
+                    className="base-stage"
+                    width={stageSize.width}
+                    height={stageSize.height}>
+                    <MSTProvider value={designerObject}>
+                        <Layer>
+                            {designerObject.designObjects.map(({ id }) => (
+                                <Rect id={id} key={id} />
+                            ))}
+                        </Layer>
+                    </MSTProvider>
+                </Stage>
+            </MSTProvider>
         </>
     );
 };
