@@ -16,11 +16,11 @@ export const DesignerModel = t
             ),
             cursorType.default
         ),
-        designObjects: t.array(RectModel)
+        designObjects: t.map(RectModel)
     })
     .actions(self => ({
         addObject(designObject: Instance<typeof RectModel>) {
-            self.designObjects.push(designObject);
+            self.designObjects.set(String(designObject.id), designObject);
         },
         setDefaultCursor() {
             self.cursor = cursorType.default;

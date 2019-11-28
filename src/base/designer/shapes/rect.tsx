@@ -13,11 +13,7 @@ export const Rect = observer(({ id }: { id: number }) => {
             setMoveCursor
         })
     );
-    const rectObject = useMst(store =>
-        store.designObjects.find(
-            (object: Instance<typeof RectModel>) => object.id === id
-        )
-    );
+    const rectObject = useMst(store => store.designObjects.get(id));
     const setCoords = ({ target }: { target: Konva.Node }) => {
         rectObject.setCoords({
             x: target.x(),

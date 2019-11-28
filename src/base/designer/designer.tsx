@@ -33,8 +33,10 @@ const rectObject = RectModel.create({
 });
 
 const designerObject = DesignerModel.create({
-    designObjects: [rectObject]
+    designObjects: {}
 });
+
+designerObject.addObject(rectObject);
 
 const DebugInfo = observer(() => (
     <pre>Designer state: {JSON.stringify(designerObject, null, 2)}</pre>
@@ -51,8 +53,10 @@ export const Designer = () => {
                     height={stageSize.height}>
                     <MSTProvider value={designerObject}>
                         <Layer>
-                            {designerObject.designObjects.map(({ id }) => (
-                                <Rect id={id} key={id} />
+                            {Array.from(
+                                designerObject.designObjects.keys()
+                            ).map(id => (
+                                <Rect id={Number(id)} key={id} />
                             ))}
                         </Layer>
                     </MSTProvider>
