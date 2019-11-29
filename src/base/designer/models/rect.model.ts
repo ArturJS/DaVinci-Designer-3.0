@@ -7,11 +7,21 @@ export const RectModel = t
         height: t.number,
         x: t.number,
         y: t.number,
-        fill: t.string
+        scaleX: t.optional(t.number, 1),
+        scaleY: t.optional(t.number, 1),
+        fill: t.string,
+        isSelected: t.optional(t.boolean, false)
     })
     .actions(self => ({
         setCoords({ x, y }: { x: number; y: number }) {
             self.x = x;
             self.y = y;
+        },
+        setScale({ scaleX, scaleY }: { scaleX: number; scaleY: number }) {
+            self.scaleX = scaleX ?? self.scaleX;
+            self.scaleY = scaleY ?? self.scaleY;
+        },
+        toggleSelected(isSelected: boolean) {
+            self.isSelected = isSelected;
         }
     }));

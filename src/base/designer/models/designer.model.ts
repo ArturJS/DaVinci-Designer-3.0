@@ -27,5 +27,10 @@ export const DesignerModel = t
         },
         setMoveCursor() {
             self.cursor = cursorType.move;
+        },
+        unselectAll() {
+            self.designObjects.forEach(designObject => {
+                designObject.toggleSelected(false);
+            });
         }
     }));
