@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { useMst } from '../../../utils';
 
-export const DebugInfo = observer(() => {
+export const DebugInfo: React.FunctionComponent = observer(() => {
     const designObject = useMst();
 
     return (

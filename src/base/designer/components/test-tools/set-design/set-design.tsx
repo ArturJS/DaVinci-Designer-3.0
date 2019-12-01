@@ -5,11 +5,17 @@ import { applySnapshot, getSnapshot } from 'mobx-state-tree';
 import { useMst } from '../../../utils';
 import './styles.scss';
 
+type TMouseHandler = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => void;
+
 export const SetDesign = observer(() => {
     const [error, setError] = useState('');
     const areaRef = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
     const designObject = useMst();
-    const withCatchError = (fn: Function) => async () => {
+    const withCatchError = (fn: Function): TMouseHandler => async (): Promise<
+        void
+    > => {
         try {
             await fn();
             setError('');
@@ -17,13 +23,15 @@ export const SetDesign = observer(() => {
             setError(`Failed to set design. Error info: ${err}`);
         }
     };
-    const setDesign = (parsedDesignState: Record<string, any>) => {
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const setDesign = (parsedDesignState: Record<string, any>): void => {
         applySnapshot(designObject, parsedDesignState);
     };
     const setDesignFromTextarea = withCatchError(() => {
         const parsedDesignState = JSON.parse(areaRef.current.value) as Record<
             string,
-            any
+            any // eslint-disable-line @typescript-eslint/no-explicit-any
         >;
 
         setDesign(parsedDesignState);
@@ -31,12 +39,13 @@ export const SetDesign = observer(() => {
     const { clipboard } = window.navigator;
     const setDesignFromClipboard = withCatchError(async () => {
         const text = await clipboard.readText();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const parsedDesignState = JSON.parse(text) as Record<string, any>;
 
         setDesign(parsedDesignState);
         areaRef.current.value = text;
     });
-    const copyDesignToClipboard = () => {
+    const copyDesignToClipboard = (): void => {
         const designState = JSON.stringify(getSnapshot(designObject), null, 4);
 
         navigator.clipboard.writeText(designState);

@@ -13,15 +13,15 @@ export const RectModel = t
         isSelected: t.optional(t.boolean, false)
     })
     .actions(self => ({
-        setCoords({ x, y }: { x: number; y: number }) {
+        setCoords({ x, y }: { x: number; y: number }): void {
             self.x = x;
             self.y = y;
         },
-        setScale({ scaleX, scaleY }: { scaleX: number; scaleY: number }) {
+        setScale({ scaleX, scaleY }: { scaleX: number; scaleY: number }): void {
             self.scaleX = scaleX ?? self.scaleX;
             self.scaleY = scaleY ?? self.scaleY;
         },
-        toggleSelected(isSelected: boolean) {
+        toggleSelected(isSelected: boolean): void {
             self.isSelected = isSelected;
         }
     }));

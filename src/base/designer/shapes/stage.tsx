@@ -1,10 +1,7 @@
-/* @ts-ignore */
 import * as React from 'react';
-import { ReactElement, useState, createContext } from 'react';
 import Konva from 'konva';
 import { Stage as KonvaStage } from 'react-konva';
 import { observer } from 'mobx-react';
-import { RectModel } from '../models';
 import { useMst } from '../utils';
 
 export const Stage = observer(
@@ -14,7 +11,7 @@ export const Stage = observer(
         width,
         height
     }: {
-        children: ReactElement;
+        children: React.ReactElement;
         className: string;
         width: number;
         height: number;
@@ -23,7 +20,9 @@ export const Stage = observer(
             cursor: store.cursor,
             unselectAll: store.unselectAll
         }));
-        const unselectAllIfNeeded = (e: Konva.KonvaEventObject<MouseEvent>) => {
+        const unselectAllIfNeeded = (
+            e: Konva.KonvaEventObject<MouseEvent>
+        ): void => {
             const isClickedOnEmpty = e.target === e.target.getStage();
 
             if (isClickedOnEmpty) {
