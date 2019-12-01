@@ -19,13 +19,18 @@ export const DesignerModel = t
         designObjects: t.map(RectModel)
     })
     .actions(self => ({
-        addObject(designObject: Instance<typeof RectModel>) {
+        addObject(designObject: Instance<typeof RectModel>): void {
             self.designObjects.set(String(designObject.id), designObject);
         },
-        setDefaultCursor() {
+        setDefaultCursor(): void {
             self.cursor = cursorType.default;
         },
-        setMoveCursor() {
+        setMoveCursor(): void {
             self.cursor = cursorType.move;
+        },
+        unselectAll(): void {
+            self.designObjects.forEach(designObject => {
+                designObject.toggleSelected(false);
+            });
         }
     }));

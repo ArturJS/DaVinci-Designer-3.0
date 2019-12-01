@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
 import { Stage, Layer, Rect } from './shapes';
 import { MSTProvider } from './utils';
 import { DesignerModel, RectModel } from './models';
+import { TestTools } from './components';
 import './styles.scss';
-
-const { useState } = React;
 
 const stageSize = {
     width: screen.width / 2,
     height: screen.height / 2
 };
 
-const getRandomColor = () => {
+const getRandomColor = (): string => {
     const letters = '0123456789ABCDEF';
     const colors = ['#'];
 
@@ -38,15 +36,11 @@ const designerObject = DesignerModel.create({
 
 designerObject.addObject(rectObject);
 
-const DebugInfo = observer(() => (
-    <pre>Designer state: {JSON.stringify(designerObject, null, 2)}</pre>
-));
-
-export const Designer = () => {
+export const Designer: React.FunctionComponent = () => {
     return (
         <>
-            <DebugInfo />
             <MSTProvider value={designerObject}>
+                <TestTools />
                 <Stage
                     className="base-stage"
                     width={stageSize.width}

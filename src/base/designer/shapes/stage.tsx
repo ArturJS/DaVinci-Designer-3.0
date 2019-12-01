@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ReactElement, useState, createContext } from 'react';
+import Konva from 'konva';
 import { Stage as KonvaStage } from 'react-konva';
 import { observer } from 'mobx-react';
-import { RectModel } from '../models';
 import { useMst } from '../utils';
 
 export const Stage = observer(
@@ -12,19 +11,32 @@ export const Stage = observer(
         width,
         height
     }: {
-        children: ReactElement;
+        children: React.ReactElement;
         className: string;
         width: number;
         height: number;
     }) => {
-        const cursor = useMst(store => store.cursor);
+        const { cursor, unselectAll } = useMst(store => ({
+            cursor: store.cursor,
+            unselectAll: store.unselectAll
+        }));
+        const unselectAllIfNeeded = (
+            e: Konva.KonvaEventObject<MouseEvent>
+        ): void => {
+            const isClickedOnEmpty = e.target === e.target.getStage();
+
+            if (isClickedOnEmpty) {
+                unselectAll();
+            }
+        };
 
         return (
             <KonvaStage
                 style={{ cursor }}
                 className={className}
                 width={width}
-                height={height}>
+                height={height}
+                onClick={unselectAllIfNeeded}>
                 {children}
             </KonvaStage>
         );

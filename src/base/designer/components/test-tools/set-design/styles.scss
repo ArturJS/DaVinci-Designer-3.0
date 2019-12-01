@@ -1,0 +1,16 @@
+.set-design {
+    display: flex;
+    flex-direction: column;
+
+    .error-info {
+        background-color: #ff0000;
+    }
+
+    .design-input {
+        min-height: 250px;
+    }
+
+    .btn-block {
+        display: flex;
+    }
+}
