@@ -9,6 +9,7 @@ export const RectModel = t
         y: t.number,
         scaleX: t.optional(t.number, 1),
         scaleY: t.optional(t.number, 1),
+        rotation: t.optional(t.number, 0), // in degrees
         fill: t.string,
         isSelected: t.optional(t.boolean, false)
     })
@@ -20,6 +21,9 @@ export const RectModel = t
         setScale({ scaleX, scaleY }: { scaleX: number; scaleY: number }): void {
             self.scaleX = scaleX ?? self.scaleX;
             self.scaleY = scaleY ?? self.scaleY;
+        },
+        setRotation(angle: number): void {
+            self.rotation = (360 + angle) % 360;
         },
         toggleSelected(isSelected: boolean): void {
             self.isSelected = isSelected;

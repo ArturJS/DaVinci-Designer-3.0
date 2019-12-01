@@ -61,6 +61,7 @@ export const Rect = observer(({ id }: { id: number }) => {
                         scaleX: node.scaleX(),
                         scaleY: node.scaleY()
                     });
+                    rectObject.setRotation(node.rotation());
                 }}
             />
             {isSelected && <Transformer ref={trRef} />}
