@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Stage, Layer, Rect } from './shapes';
-import { MSTProvider } from './utils';
+import { MSTProvider, useMst } from './utils';
 import { DesignerModel, RectModel } from './models';
+import { TestTools } from './components';
 import './styles.scss';
 
 const { useState } = React;
@@ -38,15 +39,11 @@ const designerObject = DesignerModel.create({
 
 designerObject.addObject(rectObject);
 
-const DebugInfo = observer(() => (
-    <pre>Designer state: {JSON.stringify(designerObject, null, 2)}</pre>
-));
-
 export const Designer = () => {
     return (
         <>
-            <DebugInfo />
             <MSTProvider value={designerObject}>
+                <TestTools />
                 <Stage
                     className="base-stage"
                     width={stageSize.width}
