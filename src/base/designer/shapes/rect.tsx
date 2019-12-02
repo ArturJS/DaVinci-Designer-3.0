@@ -4,7 +4,7 @@ import { Rect as KonvaRect, Transformer } from 'react-konva';
 import Konva from 'konva';
 import { observer } from 'mobx-react';
 import { Instance } from 'mobx-state-tree';
-import { omit } from 'lodash';
+import { pick } from 'lodash';
 import { useMst } from '../utils';
 import { RectModel } from '../models';
 
@@ -38,10 +38,23 @@ export const Rect = observer(({ id }: { id: number }) => {
         }
     }, [isSelected]);
 
+    const rectConfig = pick(rectObject, [
+        'width',
+        'height',
+        'x',
+        'y',
+        'scaleX',
+        'scaleY',
+        'rotation',
+        'fill',
+        'isSelected',
+        'offset'
+    ]);
+
     return (
         <>
             <KonvaRect
-                {...omit(rectObject, 'id')}
+                {...rectConfig}
                 ref={shapeRef}
                 draggable
                 onDragMove={setCoords}

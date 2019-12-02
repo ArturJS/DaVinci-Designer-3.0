@@ -25,7 +25,7 @@ https://codesandbox.io/s/xv4318pp0o?from-embed
 
 - [x] Save and restore data from json
 
-- [ ] Fix issue with accidental position changing after set design
+- [x] Fix issue with accidental position changing after set design
 
 - [ ] Add basic ability to add text, image and background (image or just color)
 

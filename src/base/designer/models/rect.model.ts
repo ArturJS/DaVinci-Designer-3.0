@@ -13,6 +13,16 @@ export const RectModel = t
         fill: t.string,
         isSelected: t.optional(t.boolean, false)
     })
+    .views(self => ({
+        get offset() {
+            const { width, height } = self;
+
+            return {
+                x: width / 2,
+                y: height / 2
+            };
+        }
+    }))
     .actions(self => ({
         setCoords({ x, y }: { x: number; y: number }): void {
             self.x = x;
