@@ -30,31 +30,31 @@ const rectObject = RectModel.create({
     fill: getRandomColor()
 });
 
-const designerObject = DesignerModel.create({
+const designer = DesignerModel.create({
     designObjects: {}
 });
 
-designerObject.addObject(rectObject);
+designer.addObject(rectObject);
 
 export const Designer: React.FunctionComponent = () => {
     return (
         <>
-            <MSTProvider value={designerObject}>
-                <TestTools />
+            <MSTProvider value={designer}>
                 <Stage
                     className="base-stage"
                     width={stageSize.width}
                     height={stageSize.height}>
-                    <MSTProvider value={designerObject}>
+                    <MSTProvider value={designer}>
                         <Layer>
-                            {Array.from(
-                                designerObject.designObjects.keys()
-                            ).map(id => (
-                                <Rect id={Number(id)} key={id} />
-                            ))}
+                            {Array.from(designer.designObjects.keys()).map(
+                                id => (
+                                    <Rect id={Number(id)} key={id} />
+                                )
+                            )}
                         </Layer>
                     </MSTProvider>
                 </Stage>
+                <TestTools />
             </MSTProvider>
         </>
     );

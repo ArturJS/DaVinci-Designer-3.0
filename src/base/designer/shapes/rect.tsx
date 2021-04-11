@@ -3,10 +3,12 @@ import { useRef, useEffect } from 'react';
 import { Rect as KonvaRect, Transformer } from 'react-konva';
 import Konva from 'konva';
 import { observer } from 'mobx-react';
-import { Instance } from 'mobx-state-tree';
 import { pick } from 'lodash';
 import { useMst } from '../utils';
-import { RectModel } from '../models';
+import { TDesignerModel } from '../models';
+
+const selectObjectById = (id: number) => (store: TDesignerModel) =>
+    store.designObjects.get(String(id));
 
 export const Rect = observer(({ id }: { id: number }) => {
     const { setDefaultCursor, setMoveCursor } = useMst(
@@ -15,9 +17,7 @@ export const Rect = observer(({ id }: { id: number }) => {
             setMoveCursor
         })
     );
-    const rectObject = useMst(store =>
-        store.designObjects.get(String(id))
-    ) as Instance<typeof RectModel>;
+    const rectObject = useMst(selectObjectById(id));
     const setCoords = ({ target }: { target: Konva.Node }): void => {
         rectObject.setCoords({
             x: target.x(),

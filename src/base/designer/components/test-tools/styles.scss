@@ -1,3 +1,11 @@
 .test-tools {
     display: flex;
+
+    pre {
+        flex-grow: 1;
+    }
+
+    .set-design {
+        flex-grow: 1;
+    }
 }

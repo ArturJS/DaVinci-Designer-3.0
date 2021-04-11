@@ -34,3 +34,5 @@ export const DesignerModel = t
             });
         }
     }));
+
+export type TDesignerModel = Instance<typeof DesignerModel>;
