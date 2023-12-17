@@ -39,7 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "awesome-typescript-loader": "^5.2.1",
-    "css-loader": "^3.2.0",
+    "css-loader": "^6.8.1",
     "disable-output-webpack-plugin": "^1.0.1",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
